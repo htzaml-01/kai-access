@@ -3347,3 +3347,451 @@ body {
     margin-bottom: 16px;
 }
 
+/* ==============================================================
+ * MOBILE RESPONSIVE FINAL OVERRIDES (< 768px)
+ * Placed at end of file for proper specificity
+ * ============================================================== */
+@media (max-width: 767px) {
+    /* Modal Sheet: Clean, centered, responsive with proper padding */
+    .modal-overlay {
+        padding: 12px 10px 20px 10px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .modal-content,
+    .modal-content.modal-lg {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 88vh !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .modal-header {
+        padding: 16px 16px 14px 16px !important;
+        flex-shrink: 0;
+    }
+
+    .modal-header h3 {
+        font-size: 1.05rem !important;
+        gap: 8px;
+    }
+
+    .modal-body {
+        padding: 14px 16px 20px 16px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Horizontal Mode Selector Pills */
+    .mode-selector-pills {
+        display: flex !important;
+        gap: 8px !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none !important;
+        padding: 4px 2px 10px 2px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .mode-selector-pills::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .mode-pill {
+        flex-shrink: 0 !important;
+        padding: 8px 14px !important;
+        font-size: 0.8rem !important;
+        border-radius: 20px !important;
+        border: 1px solid #cbd5e1 !important;
+        background: #f8fafc !important;
+        color: #475569 !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .mode-pill.active {
+        background: var(--kai-blue-primary, #1864ab) !important;
+        color: #ffffff !important;
+        border-color: var(--kai-blue-primary, #1864ab) !important;
+        box-shadow: 0 4px 12px rgba(24, 100, 171, 0.25) !important;
+    }
+
+    /* Station Card Layout - Vertical Stack on Mobile for Clean Professional UI */
+    .station-selection-card {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 14px 14px 14px 14px !important;
+        gap: 8px !important;
+        margin-bottom: 14px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 16px !important;
+        position: relative !important;
+    }
+
+    .station-input-group {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+    }
+
+    .station-input-group label {
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        color: #475569 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .station-select {
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        padding: 11px 12px !important;
+        width: 100% !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+    }
+
+    /* Floating swap button between From and To */
+    .btn-swap-stations {
+        align-self: center !important;
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        border-radius: 50% !important;
+        background: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+        margin: -4px 0 !important;
+        z-index: 2 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .btn-swap-stations i {
+        display: none !important;
+    }
+
+    .btn-swap-stations .swap-icon-text {
+        font-size: 0.85rem !important;
+        font-weight: 900 !important;
+        color: var(--kai-blue-primary, #1864ab) !important;
+        line-height: 1 !important;
+        display: inline-block !important;
+    }
+
+    /* Booking options grid: Date & Passenger */
+    .booking-options-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .booking-options-grid .form-group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        min-width: 0 !important;
+    }
+
+    .booking-options-grid .form-group label {
+        font-size: 0.74rem !important;
+        font-weight: 700 !important;
+        color: #475569 !important;
+        white-space: nowrap !important;
+    }
+
+    .label-with-toggle {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2px !important;
+    }
+
+    .roundtrip-toggle {
+        font-size: 0.68rem !important;
+        gap: 4px !important;
+    }
+
+    .booking-options-grid input[type="date"],
+    .booking-options-grid select {
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        padding: 9px 8px !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        background: #ffffff !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    .btn-search-trains {
+        width: 100% !important;
+        padding: 14px !important;
+        font-size: 0.95rem !important;
+        font-weight: 800 !important;
+        margin-top: 6px !important;
+        margin-bottom: 16px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        box-shadow: 0 4px 14px rgba(24, 100, 171, 0.3) !important;
+    }
+
+    /* Train Results List & Schedule Cards */
+    .train-results-list {
+        margin-bottom: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .train-schedule-card {
+        padding: 16px !important;
+        border-radius: 16px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important;
+    }
+
+    .sch-card-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 12px !important;
+        padding-bottom: 10px !important;
+        border-bottom: 1px dashed #e2e8f0 !important;
+    }
+
+    .train-title-group {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .train-cat-pill {
+        font-size: 0.68rem !important;
+        padding: 3px 8px !important;
+        border-radius: 6px !important;
+    }
+
+    .train-name {
+        font-size: 0.95rem !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+    }
+
+    .train-code-sub {
+        font-size: 0.75rem !important;
+        color: #64748b !important;
+    }
+
+    .seat-badge {
+        font-size: 0.7rem !important;
+        padding: 3px 8px !important;
+        white-space: nowrap !important;
+        border-radius: 6px !important;
+        background: #f0fdf4 !important;
+        color: #166534 !important;
+        font-weight: 700 !important;
+    }
+
+    .sch-journey-row {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-bottom: 14px !important;
+    }
+
+    .sch-node {
+        min-width: 60px !important;
+    }
+
+    .sch-time {
+        font-size: 1.2rem !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        display: block !important;
+    }
+
+    .sch-station {
+        font-size: 0.75rem !important;
+        color: #64748b !important;
+        font-weight: 600 !important;
+        display: block !important;
+    }
+
+    .sch-duration-box {
+        padding: 0 4px !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2px !important;
+    }
+
+    .dur-text {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        color: var(--kai-blue-primary, #1864ab) !important;
+    }
+
+    .dur-line {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+    }
+
+    .dur-icon {
+        font-size: 0.75rem !important;
+        color: var(--kai-blue-primary, #1864ab) !important;
+        padding: 0 2px !important;
+    }
+
+    .dur-dashed {
+        height: 1px !important;
+        flex: 1 !important;
+    }
+
+    .class-text {
+        font-size: 0.7rem !important;
+        color: #64748b !important;
+        font-weight: 600 !important;
+    }
+
+    .sch-card-footer {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 12px 14px !important;
+        border-radius: 12px !important;
+        background: #f8fafc !important;
+    }
+
+    .price-box {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .price-label {
+        font-size: 0.68rem !important;
+        color: #64748b !important;
+    }
+
+    .price-val {
+        font-size: 1.15rem !important;
+        font-weight: 800 !important;
+        color: #ea580c !important;
+    }
+
+    .btn-book-train {
+        padding: 9px 16px !important;
+        font-size: 0.84rem !important;
+        font-weight: 800 !important;
+        border-radius: 10px !important;
+        white-space: nowrap !important;
+        background: var(--kai-blue-primary, #1864ab) !important;
+        color: #ffffff !important;
+        border: none !important;
+        cursor: pointer !important;
+    }
+
+    /* Ticket route: prevent cutoff on mobile */
+    .ticket-body {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 8px 0 16px 0 !important;
+        overflow: hidden !important;
+    }
+
+    .station-node {
+        min-width: 0 !important;
+        flex-shrink: 1 !important;
+    }
+
+    .station-code {
+        font-size: 1.35rem !important;
+        font-weight: 800 !important;
+    }
+
+    .station-name {
+        font-size: 0.72rem !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        max-width: 90px !important;
+    }
+
+    .time-label {
+        font-size: 0.78rem !important;
+    }
+
+    .journey-line {
+        padding: 0 10px !important;
+        flex-shrink: 0 !important;
+        min-width: 50px !important;
+    }
+
+    .line-train-icon {
+        font-size: 0.9rem !important;
+        padding: 0 4px !important;
+    }
+
+    /* Account Detail: prevent overflow on mobile */
+    .info-field-card {
+        padding: 14px 14px !important;
+        gap: 10px !important;
+        overflow: hidden !important;
+    }
+
+    .field-left-content {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .field-value-lg {
+        font-size: 0.9rem !important;
+        word-break: break-all !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .field-row-split {
+        grid-template-columns: auto 1fr !important;
+        gap: 10px !important;
+    }
+
+    .btn-field-edit {
+        padding: 7px 14px !important;
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+
