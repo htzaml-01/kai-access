@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAI Access - Official Web</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Responsive Shell Wrapper -->
+    <div class="app-shell">
+
+        <!-- DESKTOP TOP NAVBAR (Sticky at top of screen) -->
+        <nav class="desktop-top-navbar">
+            <div class="desktop-nav-container">
+                <a href="#" class="desktop-nav-brand" data-page="home">
+                    <i class="fa-solid fa-train-subway"></i> KAI Access
+                </a>
+
+                <div class="desktop-nav-links">
+                    <a href="#" class="desktop-nav-link active" data-page="home">
+                        <i class="fa-solid fa-house"></i> Home
+                    </a>
+                    <a href="#" class="desktop-nav-link" data-page="train">
+                        <i class="fa-solid fa-train"></i> Train
+                    </a>
+                    <a href="#" class="desktop-nav-link" data-page="my-tickets">
+                        <i class="fa-solid fa-receipt"></i> My Tickets
+                    </a>
+                    <a href="#" class="desktop-nav-link" data-page="promotion">
+                        <i class="fa-solid fa-percent"></i> Promotion
+                    </a>
+                    <a href="#" class="desktop-nav-link" data-page="account">
+                        <i class="fa-regular fa-user"></i> Account
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Toast Notification Popup -->
+        <div class="toast-notification" id="toast-notify">
+            <i class="fa-solid fa-circle-check"></i> <span id="toast-msg">Tiket Berhasil Dipesan!</span>
+        </div>
+
+        <!-- PAGE 1: HOME PAGE -->
+        <div class="page-container active" id="page-home">
+            <!-- PURPLE HEADER SECTION -->
+            <header class="header-container">
+                <div class="header-background">
+                    <div class="city-silhouette"></div>
+                </div>
+
+                <div class="top-nav">
+                    <div class="user-greeting">
+                        <span class="greeting-time" id="greeting-time">Selamat Datang</span>
+                        <h2 class="user-name" id="user-greeting-name">Tamu (Belum Login)</h2>
+                    </div>
+
+                    <div class="top-actions" id="top-auth-actions">
+                        <button class="btn-top-login" id="open-login-btn">
+                            <i class="fa-solid fa-right-to-bracket"></i> Login / Masuk
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FLOATING RAILPOIN CARD -->
+                <div class="railpoin-card">
+                    <div class="card-top">
+                        <div class="railpoin-info">
+                            <div class="railpoin-brand">
+                                <span class="brand-icon"><i class="fa-solid fa-gem"></i></span>
+                                <span class="brand-title">Railpoin</span>
+                            </div>
+                            <div class="railpoin-balance-row" id="open-history-trigger">
+                                <span class="balance-amount" id="main-railpoin-amount">1.250 Poin</span>
+                                <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="railpoin-actions">
+                            <button class="action-btn" id="open-history-btn">
+                                <div class="action-icon-circle">
+                                    <i class="fa-regular fa-clock-rotate-left"></i>
+                                </div>
+                                <span class="action-label">History</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-divider"></div>
+
+                    <div class="card-bottom">
+                        <div class="sub-railpoin">
+                            <div class="coin-badge">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                            <span class="sub-points"><strong id="sub-railpoin-amount">1.250</strong> Railpoin</span>
+                        </div>
+
+                        <div class="membership-tier-badge">
+                            <div class="star-icon"><i class="fa-solid fa-star"></i></div>
+                            <span class="tier-name">Basic</span>
+                            <i class="fa-solid fa-chevron-right tier-chevron"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT BELOW OVERLAPPING CARD -->
+            <main class="main-content">
+
+                <!-- Train Category Icons Row (Floating Round Circles) -->
+                <section class="services-section">
+                    <div class="services-grid">
+                        <div class="service-item" data-mode="Intercity">
+                            <div class="service-icon-bg icon-blue"><i class="fa-solid fa-train"></i></div>
+                            <span class="service-title">Intercity</span>
+                        </div>
+                        <div class="service-item" data-mode="Local">
+                            <div class="service-icon-bg icon-orange"><i class="fa-solid fa-train-subway"></i></div>
+                            <span class="service-title">Local</span>
+                        </div>
+                        <div class="service-item" data-mode="Commuter">
+                            <div class="service-icon-bg icon-red"><i class="fa-solid fa-train-tram"></i></div>
+                            <span class="service-title">Commuter</span>
+                        </div>
+                        <div class="service-item" data-mode="LRT">
+                            <div class="service-icon-bg icon-purple"><i class="fa-solid fa-subway"></i></div>
+                            <span class="service-title">LRT</span>
+                        </div>
+                        <div class="service-item" data-mode="Airport">
+                            <div class="service-icon-bg icon-cyan"><i class="fa-solid fa-plane-departure"></i></div>
+                            <span class="service-title">Airport</span>
+                        </div>
+                        <div class="service-item" data-mode="Whoosh">
+                            <div class="service-icon-bg icon-magenta"><i class="fa-solid fa-bolt"></i></div>
+                            <span class="service-title">Whoosh</span>
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Conditional "My Ticket" Section -->
+                <section class="my-ticket-section" id="my-ticket-container">
+                    <div class="section-header">
+                        <h3 class="section-title"><i class="fa-solid fa-ticket-simple"></i> My Tickets</h3>
+                        <a href="#" class="see-all-link" data-page="my-tickets">Lihat Semua</a>
+                    </div>
+
+                    <div class="ticket-card" id="home-active-ticket-card">
+                        <!-- Rendered by JS from USER_BOOKED_TICKETS -->
+                    </div>
+                </section>
+
+                <!-- PROMOTION SECTION (Horizontal Swipe Slider) -->
+                <section class="promotions-section">
+                    <div class="section-header">
+                        <h3 class="section-title"><i class="fa-solid fa-tags"></i> Promo & Voucher KAI</h3>
+                        <span class="swipe-hint"><i class="fa-solid fa-arrow-right-long"></i> Geser</span>
+                    </div>
+
+                    <div class="promotions-slider" id="promotions-container">
+                        <!-- Dynamic Promo Cards -->
+                    </div>
+                </section>
+
+                <!-- ARTICLES SECTION (Horizontal Swipe Slider) -->
+                <section class="articles-section">
+                    <div class="section-header">
+                        <h3 class="section-title"><i class="fa-solid fa-newspaper"></i> Berita & Artikel KAI</h3>
+                        <span class="swipe-hint"><i class="fa-solid fa-arrow-right-long"></i> Geser</span>
+                    </div>
+
+                    <div class="articles-slider" id="articles-container">
+                        <!-- Dynamic Articles -->
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- PAGE 2: TRAIN PAGE (Matching train.jpeg Reference Layout) -->
+        <div class="page-container" id="page-train">
+            <main class="main-content-tab">
+                <!-- Train Page Header -->
+                <div class="train-page-title-group">
+                    <h1 class="train-page-main-title">Train</h1>
+                    <p class="train-page-subtitle">Train Service from KAI</p>
+                </div>
+
+                <!-- Train Category Icons Row -->
+                <div class="train-page-services-row">
+                    <div class="service-item" data-mode="Intercity">
+                        <div class="service-icon-bg icon-blue"><i class="fa-solid fa-train"></i></div>
+                        <span class="service-title">Intercity</span>
+                    </div>
+                    <div class="service-item" data-mode="Local">
+                        <div class="service-icon-bg icon-orange"><i class="fa-solid fa-train-subway"></i></div>
+                        <span class="service-title">Local</span>
+                    </div>
+                    <div class="service-item" data-mode="Commuter">
+                        <div class="service-icon-bg icon-red"><i class="fa-solid fa-train-tram"></i></div>
+                        <span class="service-title">Commuter</span>
+                    </div>
+                    <div class="service-item" data-mode="LRT">
+                        <div class="service-icon-bg icon-purple"><i class="fa-solid fa-subway"></i></div>
+                        <span class="service-title">LRT</span>
+                    </div>
+                    <div class="service-item" data-mode="Airport">
+                        <div class="service-icon-bg icon-cyan"><i class="fa-solid fa-plane-departure"></i></div>
+                        <span class="service-title">Airport</span>
+                    </div>
+                    <div class="service-item" data-mode="Whoosh">
+                        <div class="service-icon-bg icon-magenta"><i class="fa-solid fa-bolt"></i></div>
+                        <span class="service-title">Whoosh</span>
+                    </div>
+                </div>
+
+                <!-- POPULAR DESTINATIONS SECTION (Jakarta, Bandung, Jogjakarta, Semarang, Surabaya) -->
+                <section class="popular-destinations-section">
+                    <h2 class="popular-dest-heading">Popular Destinations</h2>
+
+                    <div class="popular-destinations-list" id="popular-destinations-container">
+                        <!-- Populated by JS from POPULAR_DESTINATIONS_DATA -->
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- PAGE 3: MY TICKETS PAGE (Matching ticket.jpeg Reference Layout) -->
+        <div class="page-container" id="page-my-tickets">
+            <main class="main-content-tab">
+                <!-- Header Title Group -->
+                <div class="my-ticket-title-row">
+                    <div class="my-ticket-title-group">
+                        <h1 class="my-ticket-main-title">My Ticket</h1>
+                        <p class="my-ticket-subtitle">View all your active and unpaid train tickets</p>
+                    </div>
+                    <div class="my-ticket-header-icon" title="History Tiket">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                </div>
+
+                <!-- My Tickets & Services Section -->
+                <div class="my-tickets-services-section">
+                    <h3 class="my-tickets-section-heading">My Tickets & Services</h3>
+
+                    <div class="ticket-filter-pills" id="ticket-filter-pills-container">
+                        <button class="tkt-filter-pill active" data-filter="All">All</button>
+                        <button class="tkt-filter-pill" data-filter="Intercity">Intercity</button>
+                        <button class="tkt-filter-pill" data-filter="Airport">Airport</button>
+                        <button class="tkt-filter-pill" data-filter="Local">Local</button>
+                        <button class="tkt-filter-pill" data-filter="Commuter">Commuter</button>
+                        <button class="tkt-filter-pill" data-filter="Whoosh">Whoosh</button>
+                    </div>
+                </div>
+
+                <!-- Tickets List or Empty State Container -->
+                <div class="my-tickets-list" id="my-tickets-full-container">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </main>
+        </div>
+
+        <!-- PAGE 4: PROMOTIONS & INFORMATION PAGE (Matching Promo.jpeg & Info.jpeg) -->
+        <div class="page-container" id="page-promotion">
+            <main class="main-content-tab">
+                <!-- Title Group -->
+                <div class="promo-page-title-group">
+                    <h1 class="promo-page-main-title">Promo</h1>
+                    <p class="promo-page-subtitle">Find the latest offers and updates from Access by KAI</p>
+                </div>
+
+                <!-- Tab Headers (Promotion & Information) -->
+                <div class="promo-tab-headers">
+                    <button class="promo-tab-btn active" id="tab-btn-promotion">Promotion</button>
+                    <button class="promo-tab-btn" id="tab-btn-information">Information</button>
+                </div>
+
+                <!-- TAB 1: PROMOTION CONTENT -->
+                <div class="promo-tab-view active" id="view-promotion">
+                    <!-- Dropdown Filter for Train Modes -->
+                    <div class="promo-filter-bar">
+                        <div class="promo-dropdown-wrapper">
+                            <select id="promo-mode-dropdown" class="promo-dropdown-select">
+                                <option value="ALL">Semua Promo</option>
+                                <option value="Intercity">Kereta Intercity</option>
+                                <option value="Commuter">KRL Commuter</option>
+                                <option value="Whoosh">Whoosh Fast Train</option>
+                                <option value="Airport">KA Bandara</option>
+                                <option value="Local">Kereta Lokal</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down dropdown-chevron"></i>
+                        </div>
+                    </div>
+
+                    <!-- Vertical Promo Cards List -->
+                    <div class="promotions-vertical-list" id="promotions-full-container">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 2: INFORMATION CONTENT -->
+                <div class="promo-tab-view" id="view-information">
+                    <div class="information-vertical-list" id="information-full-container">
+                        <!-- Populated dynamically by JS (3 Information cards matching Info.jpeg) -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- PAGE 5: ACCOUNT PAGE (Matching assets/akun.jpeg) -->
+        <div class="page-container" id="page-account">
+            <!-- PURPLE HEADER SECTION WITH Silhouette -->
+            <header class="header-container account-header">
+                <div class="header-background">
+                    <div class="city-silhouette"></div>
+                </div>
+
+                <div class="account-header-nav">
+                    <h2 class="account-page-title">Account</h2>
+                </div>
+
+                <!-- OVERLAPPING ACCOUNT PROFILE CARD (Matching assets/akun.jpeg) -->
+                <div class="account-profile-card">
+                    <div class="account-profile-top">
+                        <div class="account-avatar" id="acc-card-avatar">?</div>
+                        <div class="account-user-info">
+                            <h3 class="account-user-name" id="acc-card-name">Pengguna KAI Access</h3>
+                            <div class="account-member-badge" id="acc-card-badge">
+                                <i class="fa-solid fa-user-lock"></i> Belum Login
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="account-profile-actions">
+                        <button class="btn-account-view-profile" id="btn-view-profile">
+                            <i class="fa-solid fa-right-to-bracket"></i> Login / Masuk Akun
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-content account-main-content">
+                <!-- ACCOUNT MENU LIST (Only 4 items per user prompt) -->
+                <div class="account-menu-group">
+                    <a href="#" class="account-menu-card" id="menu-trans-history" data-page="my-tickets">
+                        <div class="menu-icon-box">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <span class="menu-title">Transaction History</span>
+                        <i class="fa-solid fa-chevron-right menu-arrow"></i>
+                    </a>
+
+                    <a href="#" class="account-menu-card" id="menu-about-access">
+                        <div class="menu-icon-box">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <span class="menu-title">About Access KAI</span>
+                        <i class="fa-solid fa-chevron-right menu-arrow"></i>
+                    </a>
+
+                    <a href="#" class="account-menu-card" id="menu-help-center">
+                        <div class="menu-icon-box">
+                            <i class="fa-regular fa-circle-question"></i>
+                        </div>
+                        <span class="menu-title">Help Center</span>
+                        <i class="fa-solid fa-chevron-right menu-arrow"></i>
+                    </a>
+
+                    <a href="#" class="account-menu-card logout-card" id="menu-logout">
+                        <div class="menu-icon-box logout-icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
+                        <span class="menu-title text-danger">Logout</span>
+                        <i class="fa-solid fa-chevron-right menu-arrow"></i>
+                    </a>
+                </div>
+            </main>
+        </div>
+
+        <!-- PAGE 6: ACCOUNT DETAIL SUBPAGE (Matching assets/akundetail.jpeg) -->
+        <div class="page-container" id="page-account-detail">
+            <!-- Back Navigation Bar -->
+            <div class="account-detail-header">
+                <button class="account-back-btn" id="btn-back-account" title="Kembali">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h2 class="account-detail-title">Account Detail</h2>
+            </div>
+
+            <main class="main-content-tab account-detail-main">
+                <div class="personal-info-title-box">
+                    <h2 class="section-main-heading">Personal Information</h2>
+                    <p class="section-sub-desc">Your personal data information is not complete, complete your personal
+                        data to enjoy all Access services</p>
+                </div>
+
+                <div class="info-fields-container">
+                    <!-- Field 1: Phone Number -->
+                    <div class="info-field-card">
+                        <div class="field-left-content">
+                            <span class="field-label-sm">Phone Number</span>
+                            <strong class="field-value-lg">*********346</strong>
+                        </div>
+                        <button class="btn-field-edit">Edit</button>
+                    </div>
+
+                    <!-- Field 2: Email -->
+                    <div class="info-field-card">
+                        <div class="field-left-content">
+                            <span class="field-label-sm">Email</span>
+                            <strong class="field-value-lg">az*********a@gmail.com</strong>
+                        </div>
+                        <button class="btn-field-edit">Edit</button>
+                    </div>
+
+                    <!-- Field 3: ID Type & ID Number -->
+                    <div class="info-field-card">
+                        <div class="field-left-content">
+                            <div class="field-row-split">
+                                <div>
+                                    <span class="field-label-sm">ID Type</span>
+                                    <strong class="field-value-lg">KTP</strong>
+                                </div>
+                                <div>
+                                    <span class="field-label-sm">ID Number</span>
+                                    <strong class="field-value-lg">*************002</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-field-edit">Edit</button>
+                    </div>
+
+                    <!-- Field 4: Full Name, Gender, Date of Birth -->
+                    <div class="info-field-card bio-full-card">
+                        <div class="bio-name-block">
+                            <span class="field-label-sm">Full name</span>
+                            <h3 class="bio-full-name">AZZAM ANINDITA DANISWARA</h3>
+                        </div>
+                        <div class="bio-details-grid">
+                            <div>
+                                <span class="field-label-sm">Gender</span>
+                                <strong class="field-value-lg">Laki-Laki</strong>
+                            </div>
+                            <div>
+                                <span class="field-label-sm">Date of birth</span>
+                                <strong class="field-value-lg">12 Juli 2008</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- MOBILE BOTTOM NAVIGATION (Only visible on Mobile screen < 768px) -->
+        <nav class="mobile-bottom-nav">
+            <a href="#" class="nav-item active" data-page="home">
+                <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item" data-page="train">
+                <div class="nav-icon"><i class="fa-solid fa-train"></i></div>
+                <span>Train</span>
+            </a>
+            <a href="#" class="nav-item" data-page="my-tickets">
+                <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
+                <span>My Tickets</span>
+            </a>
+            <a href="#" class="nav-item" data-page="promotion">
+                <div class="nav-icon"><i class="fa-solid fa-percent"></i></div>
+                <span>Promotion</span>
+            </a>
+            <a href="#" class="nav-item" data-page="account">
+                <div class="nav-icon"><i class="fa-regular fa-user"></i></div>
+                <span>Account</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- MODAL: Train Booking Search Modal (Triggers when clicking any train category or popular destination) -->
+    <div class="modal-overlay" id="train-booking-modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3 id="booking-modal-title"><i class="fa-solid fa-train-subway"></i> Local Train Booking</h3>
+                <button class="close-modal-btn" id="close-booking-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-form-card">
+                    <div class="mode-selector-pills">
+                        <button class="mode-pill active" data-mode="Intercity"><i class="fa-solid fa-train"></i>
+                            Intercity</button>
+                        <button class="mode-pill" data-mode="Local"><i class="fa-solid fa-train-subway"></i>
+                            Local</button>
+                        <button class="mode-pill" data-mode="Commuter"><i class="fa-solid fa-train-tram"></i>
+                            Commuter</button>
+                        <button class="mode-pill" data-mode="LRT"><i class="fa-solid fa-subway"></i> LRT</button>
+                        <button class="mode-pill" data-mode="Whoosh"><i class="fa-solid fa-bolt"></i> Whoosh</button>
+                        <button class="mode-pill" data-mode="Airport"><i class="fa-solid fa-plane"></i> Airport</button>
+                    </div>
+
+                    <!-- Station Origin & Destination Container with Swap Button -->
+                    <div class="station-selection-card">
+                        <div class="station-input-group">
+                            <label class="field-label-sm"><i class="fa-solid fa-circle-dot text-blue"></i> From</label>
+                            <select id="train-origin-select" class="form-control station-select">
+                                <!-- Populated dynamically by JS based on Mode -->
+                            </select>
+                        </div>
+
+                        <button class="btn-swap-stations" id="btn-swap-stations" title="Tukar Stasiun">
+                            <i class="fa-solid fa-arrow-down-up-lock"></i>
+                            <span class="swap-icon-text">↑↓</span>
+                        </button>
+
+                        <div class="station-input-group">
+                            <label class="field-label-sm"><i class="fa-solid fa-location-dot text-red"></i> To</label>
+                            <select id="train-dest-select" class="form-control station-select">
+                                <!-- Populated dynamically by JS based on Mode -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Date & Passenger Options Grid -->
+                    <div class="booking-options-grid">
+                        <div class="form-group">
+                            <div class="label-with-toggle">
+                                <label><i class="fa-regular fa-calendar-days text-purple"></i> Departure Date</label>
+                                <label class="roundtrip-toggle">
+                                    <input type="checkbox" id="roundtrip-check">
+                                    <span class="toggle-text">Round Trip</span>
+                                </label>
+                            </div>
+                            <input type="date" id="train-date-input" class="form-control" value="2026-09-15">
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-users text-orange"></i> Passenger</label>
+                            <select id="train-passenger-select" class="form-control">
+                                <option value="1 Adult, 0 Infant" selected>01 Adult, 00 Infant</option>
+                                <option value="2 Adult, 0 Infant">02 Adult, 00 Infant</option>
+                                <option value="3 Adult, 0 Infant">03 Adult, 00 Infant</option>
+                                <option value="4 Adult, 0 Infant">04 Adult, 00 Infant</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn-search-trains" id="btn-search-trains">
+                        <i class="fa-solid fa-magnifying-glass"></i> Search Local Train Schedule
+                    </button>
+                </div>
+
+                <div class="train-results-list" id="train-results-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: Railpoin History Modal -->
+    <div class="modal-overlay" id="history-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Railpoin</h3>
+                <button class="close-modal-btn" id="close-history-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="railpoin-summary-box">
+                    <div class="summary-item">
+                        <span class="sum-label">Total Railpoin Saat Ini</span>
+                        <h4 class="sum-val">1.250 Poin</h4>
+                    </div>
+                    <div class="summary-item">
+                        <span class="sum-label">Status Keanggotaan</span>
+                        <span class="sum-badge">Basic</span>
+                    </div>
+                </div>
+
+                <h4 class="sub-heading">Aktivitas Terakhir</h4>
+                <div class="history-list" id="history-list-container">
+                    <!-- History items rendered by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Commuter Line Live Route & Fare Finder Modal -->
+    <div class="modal-overlay" id="commuter-modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header modal-commuter-header">
+                <div class="commuter-header-title">
+                    <div class="commuter-brand-icon"><i class="fa-solid fa-train-tram"></i></div>
+                    <div>
+                        <h3>Commuter Line Route & Live Fare</h3>
+                        <p class="commuter-subtext">Cek rute, tarif resmi progresif, & jadwal KRL terkini</p>
+                    </div>
+                </div>
+                <button class="close-modal-btn" id="close-commuter-modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="commuter-search-box">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-circle-dot color-green"></i> Stasiun Keberangkatan (Asal)</label>
+                        <select id="commuter-origin-select" class="form-control">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <div class="swap-icon-row">
+                        <button class="swap-btn" id="swap-stations-btn" title="Tukar Stasiun">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-location-dot color-red"></i> Stasiun Tujuan</label>
+                        <select id="commuter-dest-select" class="form-control">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+
+                    <button class="btn-primary search-route-btn" id="search-route-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i> Cari Rute & Cek Tarif Live
+                    </button>
+                </div>
+
+                <div class="commuter-result-card" id="commuter-result-card">
+                    <div class="result-fare-banner">
+                        <div class="fare-main">
+                            <span class="fare-label">Tarif Resmi KRL</span>
+                            <h2 class="fare-amount" id="result-fare-price">Rp 3.000</h2>
+                            <span class="fare-note">*Tarif progresif per penumpang</span>
+                        </div>
+                        <div class="distance-badge" id="result-distance">
+                            <i class="fa-solid fa-route"></i> 22.4 km
+                        </div>
+                    </div>
+
+                    <div class="fare-calculation-info" id="fare-calc-info">
+                        <i class="fa-solid fa-circle-info"></i> Skema Tarif: Rp3.000 (25 km pertama)
+                    </div>
+
+                    <div class="route-details">
+                        <h4><i class="fa-solid fa-timeline"></i> Ringkasan Perjalanan</h4>
+                        <div class="route-timeline">
+                            <div class="timeline-step">
+                                <div class="step-dot green"></div>
+                                <div class="step-info">
+                                    <strong id="res-origin-name">Depok</strong>
+                                    <span class="line-tag" id="res-origin-line">Lin Bogor</span>
+                                </div>
+                            </div>
+                            <div class="timeline-connector">
+                                <span class="transit-info" id="res-transit-info">Perjalanan Langsung (Tanpa
+                                    Transit)</span>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-dot red"></div>
+                                <div class="step-info">
+                                    <strong id="res-dest-name">Manggarai</strong>
+                                    <span class="line-tag" id="res-dest-line">Lin Bogor / Cikarang (Transit)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedule-section">
+                        <h4><i class="fa-regular fa-clock"></i> Jadwal Keberangkatan Terdekat</h4>
+                        <div class="schedule-chips" id="schedule-chips-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Promo Coupon Voucher Modal -->
+    <div class="modal-overlay" id="promo-modal">
+        <div class="modal-content">
+            <div class="modal-header promo-modal-header" id="promo-modal-header-bg">
+                <div class="promo-header-info">
+                    <span class="promo-mode-tag" id="pmodal-mode-tag"><i class="fa-solid fa-train"></i> Intercity</span>
+                    <h3 id="pmodal-title">Diskon 20% Tiket Intercity</h3>
+                </div>
+                <button class="close-modal-btn" id="close-promo-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="voucher-code-card">
+                    <span class="voucher-label">KODE VOUCHER PROMO</span>
+                    <div class="voucher-code-box">
+                        <strong id="pmodal-code">KAI20INTERCITY</strong>
+                        <button class="copy-code-btn" id="copy-code-btn">
+                            <i class="fa-regular fa-copy"></i> Salin Kode
+                        </button>
+                    </div>
+                    <span class="copy-success-toast" id="copy-toast"><i class="fa-solid fa-check"></i> Kode Berhasil
+                        Disalin!</span>
+                </div>
+
+                <div class="promo-details-list">
+                    <div class="detail-row">
+                        <span class="detail-label"><i class="fa-regular fa-calendar-xmark"></i> Berlaku Hingga</span>
+                        <strong class="detail-val" id="pmodal-valid">30 September 2026</strong>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label"><i class="fa-solid fa-wallet"></i> Min. Transaksi</span>
+                        <strong class="detail-val" id="pmodal-min">Rp 150.000</strong>
+                    </div>
+                </div>
+
+                <h4 class="sub-heading" style="margin-top: 16px;"><i class="fa-solid fa-circle-info"></i> Deskripsi
+                    Promo</h4>
+                <p class="promo-desc-text" id="pmodal-desc">Deskripsi lengkap promo...</p>
+
+                <h4 class="sub-heading" style="margin-top: 16px;"><i class="fa-solid fa-list-check"></i> Syarat &
+                    Ketentuan</h4>
+                <ul class="promo-terms-list" id="pmodal-terms">
+                    <!-- Terms list -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Article Full Reader Modal -->
+    <div class="modal-overlay" id="article-modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <span class="article-cat-badge" id="art-modal-cat">Berita KAI</span>
+                <button class="close-modal-btn" id="close-article-modal">&times;</button>
+            </div>
+            <div class="modal-body article-detail-body">
+                <h2 class="article-detail-title" id="art-modal-title">Judul Artikel</h2>
+                <div class="article-meta-row">
+                    <span><i class="fa-regular fa-calendar"></i> <span id="art-modal-date">14 Sep 2026</span></span>
+                    <span><i class="fa-solid fa-building-flag"></i> PT Kereta Api Indonesia (Persero)</span>
+                </div>
+                <img id="art-modal-img" src="" alt="Article Banner" class="article-detail-img">
+                <div class="article-detail-text" id="art-modal-content">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: E-Boarding Pass QR Code Modal -->
+    <div class="modal-overlay" id="qr-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-qrcode"></i> E-Boarding Pass</h3>
+                <button class="close-modal-btn" id="close-qr-modal">&times;</button>
+            </div>
+            <div class="modal-body qr-modal-body">
+                <div class="qr-container">
+                    <img id="qr-image-src"
+                        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=KAI-AP44-8839210-AZZAM"
+                        alt="QR Code Boarding" class="qr-img">
+                    <p class="qr-code-text">Kode Booking: <strong id="qr-modal-booking-code">8839210</strong></p>
+                </div>
+                <div class="qr-info-box">
+                    <p><i class="fa-solid fa-shield-halved"></i> Tunjukkan QR Code ini pada mesin scanner Face
+                        Recognition / Boarding Gate Stasiun.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: Printable E-Ticket Modal -->
+    <div class="modal-overlay" id="print-ticket-modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-print"></i> E-Tiket Resmi KAI</h3>
+                <button class="close-modal-btn" id="close-print-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="printable-ticket-paper" id="printable-ticket-content">
+                    <div class="e-ticket-header">
+                        <div class="etkt-brand">
+                            <i class="fa-solid fa-train-subway"></i>
+                            <div>
+                                <h2>KAI ACCESS E-TICKET</h2>
+                                <span>PT Kereta Api Indonesia (Persero)</span>
+                            </div>
+                        </div>
+                        <div class="etkt-status-stamp" id="print-etkt-status">TIKET AKTIF</div>
+                    </div>
+
+                    <div class="e-ticket-grid">
+                        <div class="etkt-field">
+                            <span class="etkt-label">KODE BOOKING</span>
+                            <h3 class="etkt-val text-blue" id="print-booking-code">8839210</h3>
+                        </div>
+                        <div class="etkt-field">
+                            <span class="etkt-label">NAMA PENUMPANG</span>
+                            <h3 class="etkt-val" id="print-passenger">AZZAM ANINDITA</h3>
+                        </div>
+                        <div class="etkt-field">
+                            <span class="etkt-label">KERETA API</span>
+                            <h3 class="etkt-val" id="print-train-name">Argo Parahyangan (KA 44)</h3>
+                        </div>
+                        <div class="etkt-field">
+                            <span class="etkt-label">KELAS & KURSI</span>
+                            <h3 class="etkt-val" id="print-seat">Eksekutif 2 / 12A</h3>
+                        </div>
+                    </div>
+
+                    <div class="e-ticket-route-box">
+                        <div class="etkt-station-col">
+                            <span class="etkt-time" id="print-origin-time">08:15 WIB</span>
+                            <strong class="etkt-stn-name" id="print-origin-name">Gambir (GMR)</strong>
+                            <span class="etkt-date" id="print-origin-date">Selasa, 15 Sep 2026</span>
+                        </div>
+                        <div class="etkt-arrow-col">
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                            <span>Perjalanan Kereta</span>
+                        </div>
+                        <div class="etkt-station-col align-right">
+                            <span class="etkt-time" id="print-dest-time">11:00 WIB</span>
+                            <strong class="etkt-stn-name" id="print-dest-name">Bandung (BD)</strong>
+                            <span class="etkt-date" id="print-dest-date">Selasa, 15 Sep 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="e-ticket-footer-row">
+                        <div class="etkt-qr-box">
+                            <img id="print-qr-img" src="" alt="QR Boarding Code" class="print-qr-code">
+                            <span>Scan QR di Gate Stasiun</span>
+                        </div>
+                        <div class="etkt-rules-box">
+                            <p><i class="fa-solid fa-circle-check"></i> Harap menunjukkan kartu identitas asli
+                                (KTP/Passport) yang sesuai nama penumpang saat boarding.</p>
+                            <p><i class="fa-solid fa-clock"></i> Tiba di stasiun minimal 30 menit sebelum jam
+                                keberangkatan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="print-action-bar">
+                    <button class="btn-do-print" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Cetak Tiket Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7: About Access KAI Modal -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-circle-info"></i> About Access KAI</h3>
+                <button class="close-modal-btn" id="close-about-modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 28px 24px;">
+                <div style="font-size: 2.8rem; color: #1e40af; margin-bottom: 12px;">
+                    <i class="fa-solid fa-train-subway"></i>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Access by KAI</h3>
+                <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 16px;">Versi Aplikasi 7.12.0 (Official
+                    Build)</p>
+                <p
+                    style="font-size: 0.92rem; color: #334155; line-height: 1.6; text-align: left; background: #f8fafc; padding: 16px; border-radius: 14px; border: 1px solid #e2e8f0;">
+                    Access by KAI adalah platform super-app resmi dari <strong>PT Kereta Api Indonesia
+                        (Persero)</strong> untuk kemudahan reservasi tiket Kereta Api Antarkota, Commuter Line, Whoosh
+                    Fast Train, KA Bandara, serta layanan gaya hidup digital.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 8: Help Center Modal -->
+    <div class="modal-overlay" id="help-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-headset"></i> Help Center KAI 121</h3>
+                <button class="close-modal-btn" id="close-help-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.92rem; color: #475569; margin-bottom: 20px;">
+                    Tim Layanan Pelanggan Contact Center KAI121 siap melayani kebutuhan Anda 24 jam setiap hari:
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div
+                        style="display: flex; align-items: center; gap: 14px; background: #f0fdf4; padding: 14px 18px; border-radius: 14px; border: 1px solid #bbf7d0;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.6rem; color: #16a34a;"></i>
+                        <div>
+                            <strong style="font-size: 0.95rem; color: #15803d; display: block;">WhatsApp Resmi
+                                KAI121</strong>
+                            <span style="font-size: 0.85rem; color: #166534;">0811-2223-3121 (Centang Biru)</span>
+                        </div>
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; gap: 14px; background: #eff6ff; padding: 14px 18px; border-radius: 14px; border: 1px solid #bfdbfe;">
+                        <i class="fa-regular fa-envelope" style="font-size: 1.4rem; color: #2563eb;"></i>
+                        <div>
+                            <strong style="font-size: 0.95rem; color: #1e40af; display: block;">Email Layanan
+                                Pelanggan</strong>
+                            <span style="font-size: 0.85rem; color: #1e3a8a;">cs@kai.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 9: Logout Confirmation Modal -->
+    <div class="modal-overlay" id="logout-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-right-from-bracket" style="color: #ef4444;"></i> Konfirmasi Logout</h3>
+                <button class="close-modal-btn" id="close-logout-modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 24px;">
+                <p style="font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 24px;">
+                    Apakah Anda yakin ingin keluar dari akun Access by KAI?
+                </p>
+                <div style="display: flex; gap: 12px;">
+                    <button class="close-modal-btn"
+                        style="flex: 1; height: 48px; border-radius: 12px; background: #f1f5f9; color: #475569; font-weight: 700; font-size: 0.95rem;"
+                        onclick="document.getElementById('logout-modal').classList.remove('active')">Batal</button>
+                    <button
+                        style="flex: 1; height: 48px; border-radius: 12px; background: #ef4444; color: #ffffff; border: none; font-weight: 800; font-size: 0.95rem; cursor: pointer;"
+                        id="confirm-logout-btn">Ya, Keluar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 10: User Login / Authentication Modal -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-content modal-md">
+            <div class="modal-header login-modal-header">
+                <div class="login-header-title">
+                    <div class="login-brand-icon"><i class="fa-solid fa-train-subway"></i></div>
+                    <div>
+                        <h3>Masuk Akun Access by KAI</h3>
+                        <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;">Lengkapi data diri Anda untuk
+                            memesan tiket & menikmati layanan</p>
+                    </div>
+                </div>
+                <button class="close-modal-btn" id="close-login-modal">&times;</button>
+            </div>
+
+            <div class="modal-body login-modal-body">
+                <form id="login-form">
+                    <div class="form-group margin-bottom-14">
+                        <label class="form-label-bold"><i class="fa-solid fa-user text-blue"></i> Nama Lengkap (Sesuai
+                            KTP)</label>
+                        <input type="text" id="login-input-name" class="form-control"
+                            placeholder="Nama Lengkap Sesuai KTP" required>
+                    </div>
+
+                    <div class="form-grid-2 margin-bottom-14">
+                        <div class="form-group">
+                            <label class="form-label-bold"><i class="fa-solid fa-venus-mars text-purple"></i>
+                                Gender</label>
+                            <select id="login-input-gender" class="form-control" required>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label-bold"><i class="fa-regular fa-calendar-days text-blue"></i> Tanggal
+                                Lahir</label>
+                            <input type="date" id="login-input-dob" class="form-control" value="2008-07-12" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group margin-bottom-14">
+                        <label class="form-label-bold"><i class="fa-solid fa-id-card text-orange"></i> NIK (Nomor Induk
+                            Kependudukan / KTP)</label>
+                        <input type="text" id="login-input-nik" class="form-control" placeholder="16 Digit NIK KTP"
+                            maxlength="16" required>
+                    </div>
+
+                    <div class="form-group margin-bottom-20">
+                        <label class="form-label-bold"><i class="fa-solid fa-envelope text-red"></i> Akun Email</label>
+                        <input type="email" id="login-input-email" class="form-control" placeholder="Alamat Email"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-block-lg" id="btn-submit-login">
+                        <i class="fa-solid fa-right-to-bracket"></i> MASUK SEKARANG
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 11: Class & Seat Selection Modal -->
+    <div class="modal-overlay" id="seat-modal">
+        <div class="modal-content modal-md">
+            <div class="modal-header">
+                <div>
+                    <h3 id="seat-modal-title"><i class="fa-solid fa-chair text-blue"></i> Pilih Kelas & Kursi</h3>
+                    <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;" id="seat-modal-sub">Argo Parahyangan
+                        (KA 44)</p>
+                </div>
+                <button class="close-modal-btn" id="close-seat-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Class Selection Tabs (Ekonomi, Bisnis, Eksekutif) -->
+                <div class="class-select-tabs" id="class-select-tabs">
+                    <div class="class-tab" data-class="Ekonomi">
+                        <div class="class-tab-title">Ekonomi</div>
+                        <div class="class-tab-price" id="price-tab-ekonomi">Rp 150.000</div>
+                        <div class="class-tab-seats" id="seats-tab-ekonomi">45 Kursi</div>
+                    </div>
+                    <div class="class-tab" data-class="Bisnis">
+                        <div class="class-tab-title">Bisnis</div>
+                        <div class="class-tab-price" id="price-tab-bisnis">Rp 210.000</div>
+                        <div class="class-tab-seats" id="seats-tab-bisnis">28 Kursi</div>
+                    </div>
+                    <div class="class-tab active" data-class="Eksekutif">
+                        <div class="class-tab-title">Eksekutif</div>
+                        <div class="class-tab-price" id="price-tab-eksekutif">Rp 300.000</div>
+                        <div class="class-tab-seats" id="seats-tab-eksekutif">14 Kursi</div>
+                    </div>
+                </div>
+
+                <!-- Gerbong / Coach Carriage Selector Bar (Gerbong 1, Gerbong 2, Gerbong 3, Gerbong 4) -->
+                <div class="coach-selector-section">
+                    <label
+                        style="font-size: 0.82rem; font-weight: 700; color: #475569; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                        <i class="fa-solid fa-train text-blue"></i> Pilih Rangkaian Gerbong Kereta:
+                    </label>
+                    <div class="coach-tabs-container" id="coach-tabs-container">
+                        <button class="coach-tab active" data-coach="Gerbong 1"><i class="fa-solid fa-train-subway"></i>
+                            Gerbong 1</button>
+                        <button class="coach-tab" data-coach="Gerbong 2"><i class="fa-solid fa-train-subway"></i>
+                            Gerbong 2</button>
+                        <button class="coach-tab" data-coach="Gerbong 3"><i class="fa-solid fa-train-subway"></i>
+                            Gerbong 3</button>
+                        <button class="coach-tab" data-coach="Gerbong 4"><i class="fa-solid fa-train-subway"></i>
+                            Gerbong 4</button>
+                    </div>
+                </div>
+
+                <!-- Seat Map Legend -->
+                <div class="seat-legend">
+                    <div class="legend-item">
+                        <div class="legend-box available"></div> Tersedia
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box selected"></div> Dipilih
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box occupied"></div> Terisi
+                    </div>
+                </div>
+
+                <!-- Interactive Seat Coach Grid -->
+                <div class="seat-coach-box" id="seat-grid-container">
+                    <!-- Rendered by JS -->
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+                    <div>
+                        <span style="font-size: 0.8rem; color: #64748b;">Kursi Dipilih:</span>
+                        <strong style="font-size: 1rem; color: #1e293b; display: block;"
+                            id="selected-seat-label">Eksekutif 1 / 4B</strong>
+                    </div>
+                    <button class="btn-primary" id="btn-confirm-seat" style="padding: 12px 24px;">
+                        Lanjut ke Pembayaran <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 12: Payment Checkout Modal -->
+    <div class="modal-overlay" id="payment-modal">
+        <div class="modal-content modal-md">
+            <div class="modal-header login-modal-header">
+                <div>
+                    <h3><i class="fa-solid fa-credit-card"></i> Pembayaran Tiket KAI</h3>
+                    <p style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;">Selesaikan pembayaran Anda untuk
+                        menerbitkan E-Tiket</p>
+                </div>
+                <button class="close-modal-btn" id="close-payment-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Payment Summary Card -->
+                <div class="payment-summary-card">
+                    <div class="pay-summary-title">Ringkasan Tiket</div>
+                    <div class="pay-train-name" id="pay-summary-train">Argo Parahyangan (KA 44)</div>
+                    <div class="pay-route-text" id="pay-summary-route">Gambir (GMR) ➔ Bandung (BD)</div>
+
+                    <div class="pay-meta-row">
+                        <div class="pay-meta-item">
+                            <span>KELAS & KURSI</span>
+                            <strong id="pay-summary-seat">Eksekutif 1 / 4B</strong>
+                        </div>
+                        <div class="pay-meta-item" style="text-align: right;">
+                            <span>TOTAL BAYAR</span>
+                            <strong id="pay-summary-total" style="font-size: 1.2rem; color: #fef08a;">Rp
+                                300.000</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="railpoin-bonus-tag">
+                    <i class="fa-solid fa-gem text-amber"></i> Bonus Pembayaran: +100 Railpoin
+                </div>
+
+                <!-- Promo Code Box in Payment Modal -->
+                <div class="payment-promo-card"
+                    style="margin-top: 14px; margin-bottom: 16px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 12px;">
+                    <label
+                        style="font-size: 0.82rem; font-weight: 700; color: #334155; display: block; margin-bottom: 6px;">
+                        <i class="fa-solid fa-ticket text-orange"></i> Kode Promo Voucher
+                    </label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="pay-promo-input" class="form-control" placeholder="Masukkan Kode Promo"
+                            style="text-transform: uppercase; font-weight: 700;">
+                        <button type="button" id="btn-apply-promo"
+                            style="padding: 0 16px; background: var(--kai-blue-primary); color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">Gunakan</button>
+                    </div>
+                    <div id="pay-promo-msg"
+                        style="font-size: 0.8rem; margin-top: 6px; font-weight: 600; display: none;"></div>
+                </div>
+
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 12px;"><i
+                        class="fa-solid fa-wallet text-blue"></i> Pilih Metode Pembayaran</h4>
+
+                <div class="payment-methods-grid">
+                    <div class="pay-method-option active" data-method="qris">
+                        <div class="pay-method-left">
+                            <div class="pay-method-icon"><i class="fa-solid fa-qrcode"></i></div>
+                            <div>
+                                <div class="pay-method-name">QRIS / E-Wallet</div>
+                                <div class="pay-method-sub">GoPay, OVO, ShopeePay, DANA</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-circle-check text-blue" style="font-size: 1.2rem;"></i>
+                    </div>
+
+                    <div class="pay-method-option" data-method="va">
+                        <div class="pay-method-left">
+                            <div class="pay-method-icon"><i class="fa-solid fa-building-columns"></i></div>
+                            <div>
+                                <div class="pay-method-name">Transfer Bank (Virtual Account)</div>
+                                <div class="pay-method-sub">BCA, Mandiri, BNI, BRI</div>
+                            </div>
+                        </div>
+                        <i class="fa-regular fa-circle text-gray" style="font-size: 1.2rem;"></i>
+                    </div>
+
+                    <div class="pay-method-option" data-method="kaipay">
+                        <div class="pay-method-left">
+                            <div class="pay-method-icon"><i class="fa-solid fa-train"></i></div>
+                            <div>
+                                <div class="pay-method-name">KAIPay</div>
+                                <div class="pay-method-sub">Saldo Akses KAI</div>
+                            </div>
+                        </div>
+                        <i class="fa-regular fa-circle text-gray" style="font-size: 1.2rem;"></i>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-block-lg" id="btn-pay-now">
+                    <i class="fa-solid fa-shield-check"></i> BAYAR SEKARANG
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
